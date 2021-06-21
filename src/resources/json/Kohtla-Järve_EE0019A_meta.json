@@ -23,5 +23,7 @@
     "stationCharactOfZone": "industrial",
     "stationSubcRurBackg": "",
     "monitoringObj": "",
-    "meteorologicalParameter": "Wind velocityWind directionTemperatureRelative humidity"
+    "meteorologicalParameter51": "Wind velocity",
+    "meteorologicalParameter52": "Wind direction",
+    "meteorologicalParameter54": "Temperature"
 }

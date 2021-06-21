@@ -23,5 +23,7 @@
     "stationCharactOfZone": "natural",
     "stationSubcRurBackg": "",
     "monitoringObj": "",
-    "meteorologicalParameter": "Wind velocityWind direction"
+    "meteorologicalParameter51": "Wind velocity",
+    "meteorologicalParameter52": "Wind direction",
+    "meteorologicalParameter54": ""
 }

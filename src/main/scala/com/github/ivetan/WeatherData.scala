@@ -30,12 +30,10 @@ object WeatherData extends App {
                      stationLongitudeDms: String, stationAltitude: Int,
                      typeOfStation: String, stationTypeOfArea: String,
                      stationCharactOfZone: String, stationSubcRurBackg: String,
-                     monitoringObj: String, meteorologicalParameter: String
+                     monitoringObj: String, meteorologicalParameter51: String, meteorologicalParameter52: String,
+                     meteorologicalParameter54: String, meteorologicalParameter58: String, meteorologicalParameter99: String
                     )
 
-  implicit val fileRW: default.ReadWriter[Station] = upickle.default.macroRW[Station]
-
-  //FIXME if there are several meteorological parameter
   def fromXMLtoFile(node: scala.xml.Node): Station = {
     val stationInfo = node \ "station_info"
     Station(
@@ -63,7 +61,11 @@ object WeatherData extends App {
       stationCharactOfZone = (stationInfo \ "station_characteristic_of_zone").text,
       stationSubcRurBackg = (stationInfo \ " station_subcategory_rural_background").text,
       monitoringObj = (stationInfo \ "monitoring_obj").text,
-      meteorologicalParameter = (stationInfo \ "meteorological_parameter").text
+      meteorologicalParameter51 = (stationInfo \ "meteorological_parameter").filter( _ \ "@code" exists (_.text == "51")) .text,
+      meteorologicalParameter52 = (stationInfo \ "meteorological_parameter").filter( _ \ "@code" exists (_.text == "52")) .text,
+      meteorologicalParameter54 = (stationInfo \ "meteorological_parameter").filter( _ \ "@code" exists (_.text == "54")) .text,
+      meteorologicalParameter58 = (stationInfo \ "meteorological_parameter").filter( _ \ "@code" exists (_.text == "58")) .text,
+      meteorologicalParameter99 = (stationInfo \ "meteorological_parameter").filter( _ \ "@code" exists (_.text == "99")) .text
     )
   }
 
@@ -71,6 +73,8 @@ object WeatherData extends App {
   val stations = stationNodes.map(node => fromXMLtoFile(node))
 
   val destJSONFilePaths = stations.map(station => getFilePath(folderName, "json", station.stationName, station.stationEUCode, prefix = "_meta", suffix = ".json"))
+
+  implicit val fileRW: default.ReadWriter[Station] = upickle.default.macroRW[Station]
 
   /** Create JSON file for each station
    */

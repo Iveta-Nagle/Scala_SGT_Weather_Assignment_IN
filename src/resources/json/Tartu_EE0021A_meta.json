@@ -23,5 +23,7 @@
     "stationCharactOfZone": "residential",
     "stationSubcRurBackg": "",
     "monitoringObj": "Compliance monitoring for EC Directives incl. assessment of on-going abatement programmes and/or for the prediction of planned abatement actions",
-    "meteorologicalParameter": "Wind velocityWind directionTemperatureRelative humidity"
+    "meteorologicalParameter51": "Wind velocity",
+    "meteorologicalParameter52": "Wind direction",
+    "meteorologicalParameter54": "Temperature"
 }
