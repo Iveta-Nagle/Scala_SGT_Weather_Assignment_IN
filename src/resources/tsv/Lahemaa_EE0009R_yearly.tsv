@@ -1,0 +1,15 @@
+componentName	componentCaption	measurementUnit	measurementTechniquePrinciple	year2005Mean(P50)
+Sulphur dioxide (air)	SO2	µg/m3	ion chromatography	2.114	1.350
+Sulphur dioxide (air)	SO2	µg/m3	UV fluorescence		
+Particulate matter < 10 µm (aerosol)	PM10	µg/m3	gravimetry		
+Ozone (air)	O3	µg/m3	UV absorption	57.056	55.333
+Nitrogen dioxide (air)	NO2	µg/m3	Griess-Saltzmann reaction	3.116	2.467
+Nitrogen dioxide (air)	NO2	µg/m3	chemiluminescence		
+Nitrogen oxides (air)	NOX	µg NO2/m3	chemiluminescence	3.439	2.725
+Carbon monoxide (air)	CO	mg/m3	infrared absorption	0.174	0.196
+Lead (aerosol)	Pb	µg/m3	atomic absorption spectrometry (AAS)		
+Cadmium (aerosol)	Cd	ng/m3	atomic absorption spectrometry (AAS)		
+Nickel (aerosol)	Ni	ng/m3	atomic absorption spectrometry (AAS)		
+Arsenic (aerosol)	As	ng/m3	atomic absorption spectrometry (AAS)		
+Benzo(a)pyrene in PM10 (aerosol)	BaP in PM10	ng/m3	gas chromatography mass spectrometry (GC-MS)		
+Particulate matter < 2.5 µm (aerosol)	PM2.5	µg/m3	Beta ray attenuation		

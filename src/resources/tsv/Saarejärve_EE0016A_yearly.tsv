@@ -1,0 +1,6 @@
+componentName	componentCaption	measurementUnit	measurementTechniquePrinciple	year2005Mean(P50)
+Sulphur dioxide (air)	SO2	µg/m3	UV fluorescence	1.260	0.562
+Ozone (air)	O3	µg/m3	UV absorption	53.536	51.083
+Nitrogen dioxide (air)	NO2	µg/m3	chemiluminescence	2.744	1.996
+Nitrogen oxides (air)	NOX	µg NO2/m3	chemiluminescence	3.064	2.263
+Particulate matter < 2.5 µm (aerosol)	PM2.5	µg/m3	Beta ray attenuation		
