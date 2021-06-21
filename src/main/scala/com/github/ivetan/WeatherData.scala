@@ -72,16 +72,25 @@ object WeatherData extends App {
 
   val destJSONFilePaths = stations.map(station => getFilePath(folderName, "json", station.stationName, station.stationEUCode, prefix = "_meta", suffix = ".json"))
 
-  val destTSVFilePaths = stations.map(station => getFilePath(folderName, "tsv", station.stationName, station.stationEUCode, prefix = "_yearly", suffix = ".tsv"))
-
+  /** Create JSON file for each station
+   */
   for (i <- stations.indices) Utilities.saveString(upickle.default.write(stations(i), indent = 4), destJSONFilePaths(i))
 
+
+  /** Write all station JSON files in one
+   * Creates new country level JSON file
+   */
   val countryJson = upickle.default.write(stations, indent = 4)
   Utilities.saveString(countryJson, folderName + "/json/stations_Estonia_meta.json" )
+
 
   case class Measurement(componentName: String, componentCaption: String, measurementUnit: String, measurementTechniquePrinciple: String
                          , year2005Mean : String, year2005Median: String)
 
+
+  /** Find measurements by measurement name
+   * Use already filtered data from specific year
+   */
   def getMeasurement(savedStrings: String, measurement: String): String = {
    val stringList = savedStrings.split("\n").map(_.trim).toList
    val measurementNameIndex = stringList.indexOf(measurement)
@@ -102,11 +111,10 @@ object WeatherData extends App {
     )
   }
 
-
   /** Write measurement data in TSV files
    * Creates new TSV files
    */
-  def writeToTSV(stationMeasurements: Seq[Measurement], filePath: String) = {
+  def writeToTSV(stationMeasurements: Seq[Measurement], filePath: String): Unit = {
     implicit val measurementEncoder: HeaderEncoder[Measurement] = HeaderEncoder.caseEncoder("componentName",
       "componentCaption", "measurementUnit", "measurementTechniquePrinciple"
       , "year2005Mean", "year2005Median")(Measurement.unapply)
@@ -117,7 +125,12 @@ object WeatherData extends App {
     writer.write(stationMeasurements).close()
   }
 
+  val destTSVFilePaths = stations.map(station => getFilePath(folderName, "tsv", station.stationName, station.stationEUCode, prefix = "_yearly", suffix = ".tsv"))
 
+
+  /** Call writeToTSV function for each station
+   * Creates and saves TSV files in destination
+   */
   for (i <- stations.indices) {
     val station = stationNodes.filter(_ \ "@Id" exists (_.text.contains(stations(i).stationName))) \ "measurement_configuration"
     val stationMeasurements = station.map(node => fromXMLtoMeasures(node))
